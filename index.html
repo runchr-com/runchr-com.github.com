@@ -195,12 +195,12 @@
 
     section { padding: 36px 0; }
 
-    .status-panel, .about-block, .principles-block, .service-detail, .contact-block {
+    .status-panel, .about-block, .principles-block, .contact-block {
       border: 1px solid var(--border);
       background: var(--panel);
       border-radius: var(--radius-xl);
     }
-    .status-panel, .about-block, .principles-block, .service-detail, .contact-block { padding: 24px; }
+    .status-panel, .about-block, .principles-block, .contact-block { padding: 24px; }
     .status-panel { box-shadow: var(--shadow); }
     .status-title, .section-label {
       font-size: 12px;
@@ -209,16 +209,16 @@
       color: var(--faint);
     }
     .status-list { display: grid; gap: 12px; margin-top: 18px; }
-    .status-card, .detail-card, .feature-panel, .next-step-panel, .principle-card {
+    .status-card, .principle-card {
       border: 1px solid var(--border);
       border-radius: var(--radius-md);
       background: var(--black-panel);
       padding: 18px;
     }
     .status-index, .principle-index { font-size: 13px; color: var(--faint); }
-    .status-card h3, .service-card h3, .section-title, .detail-title, .hero-name { font-family: "Space Grotesk", sans-serif; }
+    .status-card h3, .service-card h3, .section-title, .hero-name { font-family: "Space Grotesk", sans-serif; }
     .status-card h3 { margin: 6px 0 0; font-size: 20px; }
-    .status-card p, .section-desc, .detail-copy, .feature-item, .principle-card p, .contact-copy, .service-card p { color: var(--muted); }
+    .status-card p, .section-desc, .principle-card p, .contact-copy, .service-card p { color: var(--muted); }
     .status-card p { margin: 10px 0 0; line-height: 1.7; font-size: 14px; }
 
     .about-grid {
@@ -294,51 +294,6 @@
       font-size: 14px;
     }
 
-    .service-detail { display: none; }
-    .service-detail.active { display: block; }
-    .back-button { margin-bottom: 24px; }
-    .detail-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
-      gap: 32px;
-    }
-    .detail-icon { font-size: 54px; line-height: 1; margin-bottom: 12px; }
-    .detail-title {
-      margin: 12px 0 0;
-      font-size: clamp(34px, 4vw, 48px);
-      line-height: 1.08;
-    }
-    .detail-copy { margin: 18px 0 0; line-height: 1.85; font-size: 16px; }
-    .detail-pair-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 26px;
-    }
-    .detail-card-copy, .next-step-copy {
-      margin-top: 12px;
-      line-height: 1.8;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .feature-list { display: grid; gap: 12px; margin-top: 16px; }
-    .feature-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      border-radius: 16px;
-      padding: 14px 16px;
-      line-height: 1.65;
-      font-size: 14px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .feature-bullet { color: var(--soft); }
-    .next-step-panel {
-      margin-top: 16px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-    }
-
     .principles-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -375,7 +330,7 @@
     .footer-tagline { margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.3); }
 
     @media (max-width: 960px) {
-      .hero, .detail-grid, .about-grid, .services-grid, .principles-grid, .detail-pair-grid {
+      .hero, .about-grid, .services-grid, .principles-grid {
         grid-template-columns: 1fr;
       }
       .hero-name { font-size: 42px; }
@@ -393,7 +348,7 @@
       .hero-mark { margin-bottom: 22px; gap: 12px; }
       .hero-name { font-size: 34px; }
       .hero-logo { font-size: 48px; }
-      .status-panel, .about-block, .principles-block, .service-detail, .contact-block { padding: 22px; }
+      .status-panel, .about-block, .principles-block, .contact-block { padding: 22px; }
       .lang-button { padding: 8px 10px; }
       .service-card h3 { font-size: 25px; }
       .footer-links { flex-wrap: wrap; gap: 10px; }
@@ -486,38 +441,6 @@
 
         <div id="services-grid" class="services-grid"></div>
 
-        <div id="service-detail" class="service-detail" aria-live="polite">
-          <button id="back-button" class="button-ghost back-button">← <span data-i18n="detail.back">서비스 목록으로</span></button>
-          <div class="detail-grid">
-            <div>
-              <div id="detail-icon" class="detail-icon">🚀</div>
-              <div class="section-label">Service Overview</div>
-              <h3 id="detail-title" class="detail-title">Launch Studio</h3>
-              <p id="detail-desc" class="detail-copy"></p>
-              <div class="detail-pair-grid">
-                <div class="detail-card">
-                  <p class="section-label">Problem</p>
-                  <p id="detail-problem" class="detail-card-copy"></p>
-                </div>
-                <div class="detail-card">
-                  <p class="section-label">Solution</p>
-                  <p id="detail-solution" class="detail-card-copy"></p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="feature-panel">
-                <p class="section-label">Key Features</p>
-                <div id="detail-features" class="feature-list"></div>
-              </div>
-              <div class="next-step-panel">
-                <p class="section-label">Outcome</p>
-                <p id="detail-next-step" class="next-step-copy"></p>
-                <a class="button-primary" style="margin-top:18px" href="mailto:hello@runchr.com" id="detail-cta">문의하기</a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -642,7 +565,6 @@
           title: "함께 해결할 문제가 있나요?",
           desc: ""
         },
-        detail: { back: "서비스 목록으로" }
       },
       en: {
         nav: { about: "About", services: "Services", principles: "Principles", contact: "Contact" },
@@ -725,25 +647,13 @@
           title: "Have a problem you'd like to solve together?",
           desc: ""
         },
-        detail: { back: "Back to services" }
       }
     };
 
     let currentLang = "en";
-    let activeServiceIndex = null;
 
     const langButtons = document.querySelectorAll("[data-lang-button]");
     const servicesGrid = document.getElementById("services-grid");
-    const serviceDetail = document.getElementById("service-detail");
-    const backButton = document.getElementById("back-button");
-    const detailIcon = document.getElementById("detail-icon");
-    const detailTitle = document.getElementById("detail-title");
-    const detailDesc = document.getElementById("detail-desc");
-    const detailProblem = document.getElementById("detail-problem");
-    const detailSolution = document.getElementById("detail-solution");
-    const detailFeatures = document.getElementById("detail-features");
-    const detailNextStep = document.getElementById("detail-next-step");
-    const detailCta = document.getElementById("detail-cta");
     const principlesGrid = document.getElementById("principles-grid");
 
     function getByPath(obj, path) {
@@ -761,7 +671,7 @@
     function renderServices() {
       const items = content[currentLang].services.items;
       servicesGrid.innerHTML = items.map((service, index) => `
-        <button class="service-card" data-service-index="${index}">
+        <a class="service-card" href="service.html?service=${index}&lang=${currentLang}">
           <div class="service-top">
             <div class="service-tag">${service.tag}</div>
             <div class="service-open">${service.open}</div>
@@ -772,16 +682,8 @@
             <span>${service.view}</span>
             <span aria-hidden="true">↗</span>
           </div>
-        </button>
+        </a>
       `).join("");
-
-      servicesGrid.querySelectorAll("[data-service-index]").forEach((button) => {
-        button.addEventListener("click", () => {
-          activeServiceIndex = Number(button.dataset.serviceIndex);
-          renderServiceDetail();
-          serviceDetail.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
-      });
     }
 
     function renderPrinciples() {
@@ -791,30 +693,6 @@
           <p>${item}</p>
         </div>
       `).join("");
-    }
-
-    function renderServiceDetail() {
-      if (activeServiceIndex === null) {
-        serviceDetail.classList.remove("active");
-        return;
-      }
-
-      const service = content[currentLang].services.items[activeServiceIndex];
-      detailIcon.textContent = service.icon;
-      detailTitle.textContent = service.name;
-      detailDesc.textContent = service.desc;
-      detailProblem.textContent = service.problem;
-      detailSolution.textContent = service.solution;
-      detailNextStep.textContent = service.nextStep;
-      detailCta.textContent = service.cta;
-      detailFeatures.innerHTML = service.features.map((item) => `
-        <div class="feature-item">
-          <span class="feature-bullet">✦</span>
-          <span>${item}</span>
-        </div>
-      `).join("");
-
-      serviceDetail.classList.add("active");
     }
 
     function syncLanguageButtons() {
@@ -830,14 +708,7 @@
         applyTranslations();
         renderServices();
         renderPrinciples();
-        renderServiceDetail();
       });
-    });
-
-    backButton.addEventListener("click", () => {
-      activeServiceIndex = null;
-      renderServiceDetail();
-      document.getElementById("services").scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     document.getElementById("current-year").textContent = new Date().getFullYear();
@@ -845,7 +716,6 @@
     applyTranslations();
     renderServices();
     renderPrinciples();
-    renderServiceDetail();
   </script>
 </body>
 </html>
