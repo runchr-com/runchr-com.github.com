@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runchr | Launch Studio</title>
+  <meta name="description" content="Launch Studio - 아이디어를 MVP로 빠르게 검증하고 출시합니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#0a0a0a; --panel:rgba(255,255,255,.03); --panel2:rgba(255,255,255,.05); --border:rgba(255,255,255,.1); --text:#fff; --muted:rgba(255,255,255,.72); --soft:rgba(255,255,255,.55);} *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(circle at top,rgba(255,255,255,.05),transparent 32%),var(--bg);color:var(--text);font-family:"Inter",system-ui,sans-serif}
+    a{text-decoration:none;color:inherit}.container{width:min(1120px,calc(100% - 48px));margin:0 auto;position:relative;z-index:1}
+    .grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(circle at center,black 40%,transparent 80%);pointer-events:none;z-index:0}
+    .site-header{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--border);background:rgba(10,10,10,.82);backdrop-filter:blur(14px)}
+    .site-header-inner{display:flex;align-items:center;justify-content:space-between;min-height:72px}.brand{font-family:"Space Grotesk",sans-serif;font-size:22px;font-weight:600}
+    .nav{display:flex;gap:18px;color:var(--muted);font-size:14px}.nav a:hover{color:#fff}
+    .lang-switch{display:inline-flex;padding:4px;border:1px solid var(--border);background:var(--panel2);border-radius:999px}.lang-button{border:0;padding:8px 12px;border-radius:999px;background:transparent;color:var(--soft);cursor:pointer;font-weight:600;font-size:12px}.lang-button.active{background:#fff;color:#0a0a0a}
+    main{padding:46px 0 60px}.hero{border:1px solid var(--border);background:var(--panel);border-radius:30px;padding:28px}.tag{font-size:12px;letter-spacing:.18em;color:var(--soft);text-transform:uppercase}
+    h1{font-family:"Space Grotesk",sans-serif;font-size:clamp(36px,6vw,58px);margin:14px 0 0}.lead{font-size:18px;color:var(--muted);line-height:1.8;margin-top:16px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}.card{border:1px solid var(--border);background:rgba(0,0,0,.22);border-radius:18px;padding:18px}
+    .label{font-size:12px;color:var(--soft);letter-spacing:.18em;text-transform:uppercase}.copy{color:var(--muted);line-height:1.75;margin-top:10px}
+    .feature{margin:10px 0 0;padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.03);color:var(--muted)}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:16px;border:1px solid rgba(255,255,255,.16)}.btn.primary{background:#fff;color:#0a0a0a;font-weight:600}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.nav{display:none}.container{width:min(1120px,calc(100% - 28px));}}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand" href="index.html">🙂↗ runchr</a>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <nav class="nav">
+          <a href="index.html#services" data-i18n="nav.services">서비스</a>
+          <a href="index.html#contact" data-i18n="nav.contact">문의</a>
+        </nav>
+        <div class="lang-switch">
+          <button class="lang-button active" data-lang-button="ko">KR</button>
+          <button class="lang-button" data-lang-button="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container hero">
+      <div class="tag" data-i18n="tag">Idea → MVP</div>
+      <h1 data-i18n="title">Launch Studio</h1>
+      <p class="lead" data-i18n="lead"></p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="label" data-i18n="problemLabel">Problem</div>
+          <div class="copy" data-i18n="problem"></div>
+        </div>
+        <div class="card">
+          <div class="label" data-i18n="solutionLabel">Solution</div>
+          <div class="copy" data-i18n="solution"></div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:16px;">
+        <div class="label" data-i18n="featuresLabel">Key Features</div>
+        <div id="features"></div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="mailto:hello@runchr.com" data-i18n="cta">이 서비스 문의하기</a>
+        <a class="btn" href="index.html#services" data-i18n="back">메인 서비스 목록으로</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const content = {
+      ko: {
+        nav:{services:"서비스",contact:"문의"}, tag:"Idea → MVP", title:"Launch Studio",
+        lead:"아이디어를 빠르게 검증하고 MVP로 연결하는 실행형 빌드 서비스입니다.",
+        problemLabel:"Problem", solutionLabel:"Solution", featuresLabel:"Key Features",
+        problem:"좋은 아이디어가 있어도 빠르게 검증하고 실제 MVP로 옮기는 과정이 어렵습니다.",
+        solution:"핵심 기능만 빠르게 구현하고 실제 반응으로 다음 단계를 결정하도록 돕습니다.",
+        features:["아이디어 검증 구조화","MVP 범위 정의","빠른 프로토타이핑","실사용 반응 기반 개선"],
+        cta:"이 서비스 문의하기", back:"메인 서비스 목록으로"
+      },
+      en: {
+        nav:{services:"Services",contact:"Contact"}, tag:"Idea → MVP", title:"Launch Studio",
+        lead:"An execution-focused service that validates ideas quickly and ships MVPs.",
+        problemLabel:"Problem", solutionLabel:"Solution", featuresLabel:"Key Features",
+        problem:"Strong ideas often stall before validation and implementation.",
+        solution:"We build only the core fast and use real feedback to decide what to do next.",
+        features:["Structured validation","MVP scope definition","Rapid prototyping","Iteration from real usage"],
+        cta:"Contact us about this service", back:"Back to services on home"
+      }
+    };
+    let currentLang="ko";
+    const features=document.getElementById("features");
+    const btns=document.querySelectorAll("[data-lang-button]");
+    function getByPath(o,p){return p.split('.').reduce((a,k)=>a?a[k]:undefined,o)}
+    function render(){
+      document.documentElement.lang=currentLang;
+      document.querySelectorAll('[data-i18n]').forEach(n=>{const v=getByPath(content[currentLang],n.dataset.i18n); if(typeof v==='string')n.textContent=v;});
+      features.innerHTML = content[currentLang].features.map(v=>`<div class="feature">✦ ${v}</div>`).join('');
+      btns.forEach(b=>b.classList.toggle('active', b.dataset.langButton===currentLang));
+    }
+    btns.forEach(b=>b.addEventListener('click',()=>{currentLang=b.dataset.langButton; render();}));
+    render();
+  </script>
+</body>
+</html>
