@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runchr | Services</title>
+  <meta name="description" content="runchr service introductions" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: rgba(255,255,255,0.03);
+      --panel-2: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.1);
+      --border-strong: rgba(255,255,255,0.2);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.72);
+      --soft: rgba(255,255,255,0.55);
+      --faint: rgba(255,255,255,0.42);
+      --radius-xl: 32px;
+      --radius-md: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.05), transparent 32%), var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, sans-serif;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, calc(100% - 48px)); margin: 0 auto; position: relative; z-index: 1; }
+
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10,10,10,0.82);
+      backdrop-filter: blur(14px);
+    }
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-family: "Space Grotesk", sans-serif;
+    }
+    .header-right, .nav { display: flex; align-items: center; gap: 20px; }
+    .nav { font-size: 14px; color: var(--muted); }
+
+    .lang-switch {
+      display: inline-flex;
+      padding: 4px;
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      border-radius: 999px;
+    }
+    .lang-button {
+      border: 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--soft);
+      background: transparent;
+      cursor: pointer;
+    }
+    .lang-button.active { background: #fff; color: #0a0a0a; }
+
+    .page-header {
+      padding: 54px 0 28px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .section-label { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--faint); }
+    .section-title {
+      margin: 14px 0 0;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.1;
+      font-family: "Space Grotesk", sans-serif;
+    }
+    .section-desc { color: var(--muted); line-height: 1.8; max-width: 620px; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--panel);
+      padding: 22px;
+      cursor: pointer;
+      text-align: left;
+      color: inherit;
+      transition: 160ms ease;
+    }
+    .service-card:hover, .service-card.active {
+      border-color: var(--border-strong);
+      background: var(--panel-2);
+      transform: translateY(-2px);
+    }
+    .service-meta { display: flex; align-items: center; justify-content: space-between; color: var(--soft); font-size: 13px; }
+    .service-card h3 {
+      margin: 12px 0 0;
+      font-size: 28px;
+      font-family: "Space Grotesk", sans-serif;
+    }
+    .service-card p { margin: 12px 0 0; line-height: 1.7; color: var(--muted); }
+
+    .service-detail {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+      gap: 24px;
+    }
+    .detail-icon { font-size: 48px; }
+    .detail-title {
+      margin: 14px 0 0;
+      font-size: clamp(30px, 4vw, 46px);
+      font-family: "Space Grotesk", sans-serif;
+    }
+    .detail-copy { color: var(--muted); line-height: 1.8; }
+    .detail-pair {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .detail-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: rgba(0,0,0,0.22);
+      padding: 16px;
+    }
+    .detail-card p { margin: 10px 0 0; color: var(--muted); line-height: 1.7; }
+    .feature-panel {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: rgba(0,0,0,0.22);
+      padding: 16px;
+    }
+    .feature-list { margin-top: 12px; display: grid; gap: 10px; }
+    .feature-item {
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .next-step {
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.04);
+      padding: 16px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 18px;
+      background: #fff;
+      color: #0a0a0a;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 960px) {
+      .services-grid, .detail-grid, .detail-pair { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .page-header { display: block; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(1120px, calc(100% - 28px)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand" href="index.html">🙂↗ runchr</a>
+      <div class="header-right">
+        <nav class="nav" aria-label="Main navigation">
+          <a href="index.html" data-i18n="nav.home">홈</a>
+          <a href="services.html" data-i18n="nav.services">서비스</a>
+          <a href="index.html#contact" data-i18n="nav.contact">문의</a>
+        </nav>
+        <div class="lang-switch" aria-label="language switcher">
+          <button class="lang-button active" data-lang-button="ko">KR</button>
+          <button class="lang-button" data-lang-button="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <div class="page-header">
+          <div>
+            <div class="section-label" data-i18n="services.label">Services</div>
+            <h1 class="section-title" data-i18n="services.title"></h1>
+          </div>
+          <p class="section-desc" data-i18n="services.desc"></p>
+        </div>
+
+        <div id="services-grid" class="services-grid"></div>
+
+        <div class="service-detail">
+          <div class="detail-grid">
+            <div>
+              <div id="detail-icon" class="detail-icon">🚀</div>
+              <div class="section-label" data-i18n="detail.label">Service Overview</div>
+              <h2 id="detail-title" class="detail-title"></h2>
+              <p id="detail-desc" class="detail-copy"></p>
+              <div class="detail-pair">
+                <div class="detail-card">
+                  <div class="section-label" data-i18n="detail.problem">Problem</div>
+                  <p id="detail-problem"></p>
+                </div>
+                <div class="detail-card">
+                  <div class="section-label" data-i18n="detail.solution">Solution</div>
+                  <p id="detail-solution"></p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="feature-panel">
+                <div class="section-label" data-i18n="detail.features">Key Features</div>
+                <div id="detail-features" class="feature-list"></div>
+              </div>
+              <div class="next-step">
+                <div class="section-label" data-i18n="detail.outcome">Outcome</div>
+                <p id="detail-next"></p>
+                <a class="button-primary" href="mailto:hello@runchr.com" data-i18n="detail.cta">문의하기</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const content = {
+      ko: {
+        nav: { home: "홈", services: "서비스", contact: "문의" },
+        services: {
+          label: "Services",
+          title: "runchr 서비스 소개",
+          desc: "이 페이지는 서비스가 늘어날수록 확장할 수 있도록 만들었습니다. 새 서비스를 cards 배열에 추가하면 목록과 상세가 함께 표시됩니다.",
+          cards: [
+            {
+              slug: "launch-studio",
+              name: "Launch Studio",
+              tag: "Idea → MVP",
+              icon: "🚀",
+              desc: "아이디어를 빠르게 검증하고 MVP로 연결하는 실행형 빌드 서비스입니다.",
+              problem: "좋은 아이디어가 있어도 빠르게 검증하고 실제 제품으로 옮기기 어렵습니다.",
+              solution: "아이디어를 작게 쪼개 핵심 기능만 빠르게 구현하고, 실제 반응으로 다음 단계를 정합니다.",
+              features: ["아이디어 검증 구조화", "MVP 범위 정의", "빠른 프로토타이핑", "실사용 반응 기반 개선"],
+              next: "몇 달의 고민 대신 몇 주 안에 가능성 유무를 확인할 수 있도록 돕습니다."
+            },
+            {
+              slug: "workflow-tools",
+              name: "Workflow Tools",
+              tag: "Micro SaaS",
+              icon: "🧩",
+              desc: "작은 반복 업무를 줄이는 내부 운영 도구와 마이크로 SaaS를 만듭니다.",
+              problem: "반복 업무는 팀의 시간을 계속 잡아먹지만 제품으로 정리되지 못합니다.",
+              solution: "실무 흐름을 분석해 작은 자동화 도구로 연결하여 운영 효율을 높입니다.",
+              features: ["반복 업무 자동화", "내부 도구 설계", "마이크로 SaaS 제작", "운영 생산성 향상"],
+              next: "팀이 핵심 문제 해결에 집중할 수 있도록 실행 시간을 회복합니다."
+            },
+            {
+              slug: "ai-products",
+              name: "AI Products",
+              tag: "AI Utility",
+              icon: "✨",
+              desc: "AI를 실제 업무 흐름에 붙여 실사용 가능한 서비스로 만듭니다.",
+              problem: "AI를 붙이는 것과 실제로 쓰이게 만드는 것은 다릅니다.",
+              solution: "시연 중심이 아닌 사용 흐름 중심으로 AI UX를 설계하고 운영까지 고려합니다.",
+              features: ["AI UX 설계", "업무 흐름 통합", "가벼운 제품화", "현장 피드백 반복"],
+              next: "데모에서 끝나는 AI가 아니라, 계속 쓰이는 AI로 전환합니다."
+            }
+          ]
+        },
+        detail: {
+          label: "Service Overview",
+          problem: "Problem",
+          solution: "Solution",
+          features: "Key Features",
+          outcome: "Outcome",
+          cta: "이 서비스 문의하기"
+        }
+      },
+      en: {
+        nav: { home: "Home", services: "Services", contact: "Contact" },
+        services: {
+          label: "Services",
+          title: "runchr Service Overview",
+          desc: "This page is structured to scale as more services are added. Add new entries to the cards array and both list/detail update automatically.",
+          cards: [
+            {
+              slug: "launch-studio",
+              name: "Launch Studio",
+              tag: "Idea → MVP",
+              icon: "🚀",
+              desc: "An execution-focused build service that quickly validates ideas and ships MVPs.",
+              problem: "Even strong ideas often stall before validation and real implementation.",
+              solution: "We break the idea down, build only the core, and use real user feedback to decide what comes next.",
+              features: ["Structured validation", "MVP scope definition", "Rapid prototyping", "Iteration from real usage"],
+              next: "You can test viability in weeks instead of spending months in uncertainty."
+            },
+            {
+              slug: "workflow-tools",
+              name: "Workflow Tools",
+              tag: "Micro SaaS",
+              icon: "🧩",
+              desc: "We build internal tools and micro SaaS products that remove repetitive operational work.",
+              problem: "Teams lose time on repeated tasks that never become a productized workflow.",
+              solution: "We map real operations and turn them into focused automation tools.",
+              features: ["Task automation", "Internal tool design", "Micro SaaS development", "Ops productivity improvement"],
+              next: "Your team regains execution bandwidth for high-impact work."
+            },
+            {
+              slug: "ai-products",
+              name: "AI Products",
+              tag: "AI Utility",
+              icon: "✨",
+              desc: "We build practical AI services that fit into real workflows.",
+              problem: "Adding AI is different from making it truly usable.",
+              solution: "We design AI around usage flow, not demo moments, and include operation readiness.",
+              features: ["AI UX design", "Workflow integration", "Lean productization", "Continuous field feedback"],
+              next: "Move from one-time demos to AI experiences people keep using."
+            }
+          ]
+        },
+        detail: {
+          label: "Service Overview",
+          problem: "Problem",
+          solution: "Solution",
+          features: "Key Features",
+          outcome: "Outcome",
+          cta: "Contact us about this service"
+        }
+      }
+    };
+
+    let currentLang = "ko";
+    let activeIndex = 0;
+    const langButtons = document.querySelectorAll("[data-lang-button]");
+    const servicesGrid = document.getElementById("services-grid");
+
+    const detailIcon = document.getElementById("detail-icon");
+    const detailTitle = document.getElementById("detail-title");
+    const detailDesc = document.getElementById("detail-desc");
+    const detailProblem = document.getElementById("detail-problem");
+    const detailSolution = document.getElementById("detail-solution");
+    const detailFeatures = document.getElementById("detail-features");
+    const detailNext = document.getElementById("detail-next");
+
+    function getByPath(obj, path) {
+      return path.split(".").reduce((acc, key) => (acc ? acc[key] : undefined), obj);
+    }
+
+    function applyTranslations() {
+      document.documentElement.lang = currentLang;
+      document.querySelectorAll("[data-i18n]").forEach((node) => {
+        const value = getByPath(content[currentLang], node.dataset.i18n);
+        if (typeof value === "string") node.textContent = value;
+      });
+    }
+
+    function renderServices() {
+      const cards = content[currentLang].services.cards;
+      servicesGrid.innerHTML = cards.map((service, index) => `
+        <button class="service-card ${index === activeIndex ? "active" : ""}" data-index="${index}">
+          <div class="service-meta"><span>${service.tag}</span><span>${service.icon}</span></div>
+          <h3>${service.name}</h3>
+          <p>${service.desc}</p>
+        </button>
+      `).join("");
+
+      servicesGrid.querySelectorAll("[data-index]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeIndex = Number(button.dataset.index);
+          renderServices();
+          renderDetail();
+        });
+      });
+    }
+
+    function setActiveBySlug(slug) {
+      if (!slug) return;
+      const cards = content[currentLang].services.cards;
+      const foundIndex = cards.findIndex((card) => card.slug === slug);
+      if (foundIndex >= 0) activeIndex = foundIndex;
+    }
+
+    function renderDetail() {
+      const service = content[currentLang].services.cards[activeIndex];
+      detailIcon.textContent = service.icon;
+      detailTitle.textContent = service.name;
+      detailDesc.textContent = service.desc;
+      detailProblem.textContent = service.problem;
+      detailSolution.textContent = service.solution;
+      detailNext.textContent = service.next;
+      detailFeatures.innerHTML = service.features
+        .map((item) => `<div class="feature-item">✦ ${item}</div>`)
+        .join("");
+    }
+
+    function syncLanguageButtons() {
+      langButtons.forEach((button) => {
+        button.classList.toggle("active", button.dataset.langButton === currentLang);
+      });
+    }
+
+    langButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        currentLang = button.dataset.langButton;
+        setActiveBySlug(new URLSearchParams(window.location.search).get("service"));
+        syncLanguageButtons();
+        applyTranslations();
+        renderServices();
+        renderDetail();
+      });
+    });
+
+    setActiveBySlug(new URLSearchParams(window.location.search).get("service"));
+    syncLanguageButtons();
+    applyTranslations();
+    renderServices();
+    renderDetail();
+  </script>
+</body>
+</html>
