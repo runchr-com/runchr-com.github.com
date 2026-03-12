@@ -215,7 +215,7 @@
       <div class="header-right">
         <nav class="nav" aria-label="Main navigation">
           <a href="#about" data-i18n="nav.about">소개</a>
-          <a href="#services" data-i18n="nav.services">서비스</a>
+          <a href="services.html" data-i18n="nav.services">서비스</a>
           <a href="#principles" data-i18n="nav.principles">원칙</a>
           <a href="#contact" data-i18n="nav.contact">문의</a>
         </nav>
@@ -238,7 +238,7 @@
           </h1>
           <p class="hero-desc" data-i18n="hero.desc"></p>
           <div class="hero-actions">
-            <a class="button-primary" href="#services" data-i18n="cta.services">서비스 보기</a>
+            <a class="button-primary" href="services.html" data-i18n="cta.services">서비스 소개 보러가기</a>
             <a class="button-secondary" href="#contact" data-i18n="cta.contact">문의하기</a>
           </div>
         </div>
@@ -267,7 +267,7 @@
           <p data-i18n="services.preview.desc"></p>
           <div id="preview-grid" class="preview-grid"></div>
           <div>
-            <a class="button-primary" href="launch-studio.html" data-i18n="services.preview.cta">대표 서비스 자세히 보기</a>
+            <a class="button-primary" href="services.html" data-i18n="services.preview.cta">전체 서비스 페이지 보기</a>
           </div>
         </div>
       </div>
@@ -307,7 +307,7 @@
           title2: "작고, 유용하고, 출시 가능한 서비스",
           desc: "runchr는 세상의 문제를 작게 쪼개고, 빠르게 만들고, 실제 사용 속에서 검증하는 서비스 빌드 스튜디오입니다."
         },
-        cta: { services: "서비스 보기", contact: "문의하기" },
+        cta: { services: "서비스 소개 보러가기", contact: "문의하기" },
         status: { title: "Now building", desc: "MVP 제작, AI 활용, 운영 자동화까지 실제로 작동하는 작은 서비스를 빠르게 실험하고 있습니다." },
         about: {
           label: "About",
@@ -319,9 +319,9 @@
           title: "서비스 소개는 별도 페이지로 분리했습니다",
           desc: "서비스가 계속 추가될 수 있도록, 상세 소개를 랜딩페이지 밖으로 분리했습니다.",
           items: [
-            { slug: "launch-studio", href: "launch-studio.html", tag: "Idea → MVP", name: "Launch Studio", desc: "아이디어를 빠르게 검증해 MVP로 연결합니다." },
-            { slug: "workflow-tools", href: "workflow-tools.html", tag: "Micro SaaS", name: "Workflow Tools", desc: "반복 업무를 줄이는 운영 도구를 만듭니다." },
-            { slug: "ai-products", href: "ai-products.html", tag: "AI Utility", name: "AI Products", desc: "실사용 흐름 중심의 AI 서비스를 설계합니다." }
+            { slug: "launch-studio", tag: "Idea → MVP", name: "Launch Studio", desc: "아이디어를 빠르게 검증해 MVP로 연결합니다." },
+            { slug: "workflow-tools", tag: "Micro SaaS", name: "Workflow Tools", desc: "반복 업무를 줄이는 운영 도구를 만듭니다." },
+            { slug: "ai-products", tag: "AI Utility", name: "AI Products", desc: "실사용 흐름 중심의 AI 서비스를 설계합니다." }
           ],
           preview: {
             title: "Launch Studio",
@@ -352,7 +352,7 @@
           title2: "small, useful, shippable services",
           desc: "runchr is a build studio that breaks problems into small pieces, ships quickly, and validates through real use."
         },
-        cta: { services: "View services", contact: "Contact" },
+        cta: { services: "Explore services", contact: "Contact" },
         status: { title: "Now building", desc: "From MVPs to AI-enabled workflows, we keep shipping practical and lightweight services." },
         about: {
           label: "About",
@@ -364,9 +364,9 @@
           title: "Service introductions now have a dedicated page",
           desc: "To support many upcoming services, detailed descriptions are now separated from the landing page.",
           items: [
-            { slug: "launch-studio", href: "launch-studio.html", tag: "Idea → MVP", name: "Launch Studio", desc: "Quickly validate ideas and turn them into MVPs." },
-            { slug: "workflow-tools", href: "workflow-tools.html", tag: "Micro SaaS", name: "Workflow Tools", desc: "Build focused tools for repetitive operations." },
-            { slug: "ai-products", href: "ai-products.html", tag: "AI Utility", name: "AI Products", desc: "Design AI services around practical workflows." }
+            { slug: "launch-studio", tag: "Idea → MVP", name: "Launch Studio", desc: "Quickly validate ideas and turn them into MVPs." },
+            { slug: "workflow-tools", tag: "Micro SaaS", name: "Workflow Tools", desc: "Build focused tools for repetitive operations." },
+            { slug: "ai-products", tag: "AI Utility", name: "AI Products", desc: "Design AI services around practical workflows." }
           ],
           preview: {
             title: "Launch Studio",
@@ -413,7 +413,7 @@
 
       previewGrid.innerHTML = content[currentLang].services.items
         .map((item) => `
-          <a class="preview-card" href="${item.href}">
+          <a class="preview-card" href="services.html?service=${item.slug}">
             <div class="preview-tag">${item.tag}</div>
             <div class="preview-name">${item.name}</div>
             <div class="preview-desc">${item.desc}</div>
