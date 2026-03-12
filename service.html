@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runchr Service</title>
+  <meta name="description" content="runchr service detail" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --bg:#0a0a0a; --panel:rgba(255,255,255,.03); --panel-2:rgba(255,255,255,.05); --border:rgba(255,255,255,.1); --text:#fff; --muted:rgba(255,255,255,.72); --soft:rgba(255,255,255,.55); --faint:rgba(255,255,255,.42); --radius-xl:32px; --radius-md:18px; }
+    *{box-sizing:border-box;} body{margin:0;background:var(--bg);color:var(--text);font-family:"Inter",system-ui,sans-serif;} a{text-decoration:none;color:inherit;}
+    .container{width:min(1120px,calc(100% - 48px));margin:0 auto;} .brand-font{font-family:"Space Grotesk",sans-serif;}
+    .site-header{position:sticky;top:0;border-bottom:1px solid var(--border);background:rgba(10,10,10,.82);backdrop-filter:blur(14px);} .site-header-inner{display:flex;align-items:center;justify-content:space-between;min-height:72px;}
+    .brand{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:600;letter-spacing:.04em;} .logo-emoji{line-height:1;}
+    .lang-switch{display:inline-flex;padding:4px;border:1px solid var(--border);background:var(--panel-2);border-radius:999px;} .lang-button{padding:8px 12px;border:0;background:none;color:var(--soft);cursor:pointer;border-radius:999px;font-weight:600;} .lang-button.active{background:#fff;color:#0a0a0a;}
+    main{padding:42px 0 64px;} .service-detail{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius-xl);padding:24px;} .back-button{display:inline-flex;min-height:44px;align-items:center;padding:0 16px;border-radius:14px;border:1px solid var(--border);background:transparent;color:#fff;margin-bottom:24px;}
+    .detail-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(300px,.9fr);gap:32px;} .detail-icon{font-size:54px;} .section-label{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);} .detail-title{font-family:"Space Grotesk",sans-serif;margin:12px 0 0;font-size:clamp(34px,4vw,48px);} .detail-copy{margin:18px 0 0;line-height:1.85;color:var(--muted)}
+    .detail-pair-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:26px;} .detail-card,.feature-panel,.next-step-panel{border:1px solid var(--border);border-radius:var(--radius-md);padding:18px;background:rgba(0,0,0,.22);} .detail-card-copy,.next-step-copy{margin-top:12px;line-height:1.8;color:var(--muted);} .feature-list{display:grid;gap:12px;margin-top:16px;} .feature-item{display:flex;gap:10px;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);color:var(--muted);} .next-step-panel{margin-top:16px;}
+    .button-primary{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:0 20px;border-radius:18px;background:#fff;color:#0a0a0a;font-weight:600;margin-top:18px;}
+    @media (max-width:960px){.detail-grid,.detail-pair-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <a class="brand brand-font" href="index.html#top"><span class="logo-emoji">🙂↗</span><span>runchr</span></a>
+      <div class="lang-switch" aria-label="language switcher">
+        <button class="lang-button active" data-lang-button="ko">KR</button>
+        <button class="lang-button" data-lang-button="en">EN</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="container service-detail" aria-live="polite">
+      <a id="back-button" class="back-button" href="index.html#services">← <span data-i18n="detail.back">서비스 목록으로</span></a>
+      <div class="detail-grid">
+        <div>
+          <div id="detail-icon" class="detail-icon">🚀</div>
+          <div class="section-label">Service Overview</div>
+          <h1 id="detail-title" class="detail-title">Launch Studio</h1>
+          <p id="detail-desc" class="detail-copy"></p>
+          <div class="detail-pair-grid">
+            <div class="detail-card"><p class="section-label">Problem</p><p id="detail-problem" class="detail-card-copy"></p></div>
+            <div class="detail-card"><p class="section-label">Solution</p><p id="detail-solution" class="detail-card-copy"></p></div>
+          </div>
+        </div>
+        <div>
+          <div class="feature-panel"><p class="section-label">Key Features</p><div id="detail-features" class="feature-list"></div></div>
+          <div class="next-step-panel"><p class="section-label">Outcome</p><p id="detail-next-step" class="next-step-copy"></p><a class="button-primary" href="mailto:hello@runchr.com" id="detail-cta">문의하기</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const content = {
+      ko: { services: { items: [{ name:"Launch Studio", tag:"Idea → MVP", desc:"아이디어를 빠르게 검증하고 MVP로 연결하는 실행형 빌드 서비스입니다.", icon:"🚀", problem:"좋은 아이디어가 있어도 빠르게 검증하고 실제 MVP로 옮기는 과정은 늘 어렵습니다.", solution:"Launch Studio는 아이디어를 작게 쪼개고, 가장 핵심적인 기능만 빠르게 만들어 실제 반응을 확인할 수 있게 돕습니다.", features:["아이디어 검증 구조화","MVP 범위 정의","빠른 프로토타이핑","실사용 반응 기반 개선"], nextStep:"아이디어를 생각 단계에서 멈추지 않게 합니다. Launch Studio는 아이디어를 빠르게 MVP로 만들고 실제 사용자 반응을 확인하게 해줍니다. 덕분에 몇 달의 고민 대신 몇 주 안에 '이 아이디어가 되는지 아닌지'를 명확하게 판단할 수 있습니다.", cta:"이 서비스 문의하기" }] }, detail:{ back:"서비스 목록으로" } },
+      en: { services: { items: [{ name:"Launch Studio", tag:"Idea → MVP", desc:"An execution-focused build service that validates ideas quickly and turns them into MVPs.", icon:"🚀", problem:"Even strong ideas are hard to validate quickly and turn into a real MVP.", solution:"Launch Studio breaks an idea into its smallest viable form and helps ship only the most critical features first.", features:["Idea validation framework","MVP scope definition","Rapid prototyping","Iteration based on real usage"], nextStep:"Turn ideas into reality faster. Launch Studio helps you build a simple MVP and test it with real users. Instead of spending months thinking about an idea, you'll know within weeks whether it works.", cta:"Ask about this service" }] }, detail:{ back:"Back to services" } }
+    };
+
+    const params = new URLSearchParams(location.search);
+    let currentLang = params.get("lang") === "ko" ? "ko" : "en";
+    const serviceIndex = Number(params.get("service") || 0);
+    const langButtons = document.querySelectorAll("[data-lang-button]");
+
+    function getByPath(obj, path) { return path.split('.').reduce((acc, key) => (acc ? acc[key] : undefined), obj); }
+    function applyTranslations(){ document.documentElement.lang = currentLang; document.querySelectorAll('[data-i18n]').forEach((node)=>{ const value = getByPath(content[currentLang], node.dataset.i18n); if(typeof value==='string') node.textContent = value;}); }
+    function renderService(){ const service = content[currentLang].services.items[serviceIndex] || content[currentLang].services.items[0];
+      document.getElementById('detail-icon').textContent = service.icon;
+      document.getElementById('detail-title').textContent = service.name;
+      document.getElementById('detail-desc').textContent = service.desc;
+      document.getElementById('detail-problem').textContent = service.problem;
+      document.getElementById('detail-solution').textContent = service.solution;
+      document.getElementById('detail-next-step').textContent = service.nextStep;
+      document.getElementById('detail-cta').textContent = service.cta;
+      document.getElementById('detail-features').innerHTML = service.features.map((item)=>`<div class="feature-item"><span>✦</span><span>${item}</span></div>`).join('');
+      document.getElementById('back-button').href = `index.html#services`;
+    }
+    function syncLanguageButtons(){ langButtons.forEach((b)=>b.classList.toggle('active', b.dataset.langButton===currentLang)); }
+    langButtons.forEach((button)=>button.addEventListener('click',()=>{ currentLang = button.dataset.langButton; syncLanguageButtons(); applyTranslations(); renderService(); history.replaceState(null,'',`?service=${serviceIndex}&lang=${currentLang}`);}));
+    syncLanguageButtons(); applyTranslations(); renderService();
+  </script>
+</body>
+</html>
