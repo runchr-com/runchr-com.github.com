@@ -2,56 +2,461 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>DocPublish — runchr</title>
-    <meta name="description"
-        content="A lightweight workflow for turning working documents into publishable web outputs.">
-    <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
-    <link rel="stylesheet" href="../../assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DocPublish — runchr</title>
+  <meta
+    name="description"
+    content="Write in Google Docs. Publish to Blogger with fewer steps. DocPublish helps turn documents into publishable web posts."
+  />
+  <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg" />
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <style>
+    .service-hero {
+      margin: 32px 0 28px;
+    }
+
+    .service-title {
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      max-width: 760px;
+      line-height: 1.7;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      opacity: 0.8;
+    }
+
+    .doc-section {
+      margin-top: 28px;
+    }
+
+    .doc-section h2 {
+      margin: 0 0 12px;
+      font-size: 24px;
+    }
+
+    .doc-section p {
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .service-card {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .service-card p,
+    .service-card li {
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    .service-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .flow-step {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fff;
+    }
+
+    .flow-step .step-num {
+      font-size: 12px;
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .flow-step strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .price-card {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 20px;
+      padding: 24px;
+      background: #fff;
+    }
+
+    .price-card.featured {
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    .plan-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.65;
+      margin-bottom: 8px;
+    }
+
+    .plan-name {
+      font-size: 28px;
+      margin: 0 0 8px;
+    }
+
+    .plan-price {
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .plan-price span {
+      font-size: 15px;
+      font-weight: 500;
+      opacity: 0.65;
+    }
+
+    .plan-desc {
+      line-height: 1.7;
+      opacity: 0.85;
+      margin-bottom: 16px;
+    }
+
+    .price-card ul {
+      margin: 0 0 20px;
+      padding-left: 18px;
+    }
+
+    .price-card li {
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-btn.primary {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .cta-btn.secondary {
+      background: #fff;
+      color: #111;
+    }
+
+    .note-box {
+      margin-top: 18px;
+      border-radius: 18px;
+      padding: 18px 20px;
+      background: rgba(0, 0, 0, 0.04);
+      line-height: 1.7;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 16px;
+      padding: 18px;
+      background: #fff;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 860px) {
+      .service-grid,
+      .pricing-grid,
+      .flow-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="wrap service-wrap">
-        <header class="site-header"><a class="logo" href="../../index.html"><span class="logo-mark">🙂<span
-                        class="arrow">↗</span></span><span>runchr</span></a>
-            <nav class="nav"><a href="../../index.html#thesis">Thesis</a><a
-                    href="../../index.html#products">Products</a><a href="../../index.html#model">Model</a><a
-                    href="../../index.html#contact">Contact</a></nav>
-        </header>
-        <main>
-            <section class="service-hero"><a class="back-link" href="../../index.html">← Back to runchr</a>
-                <div class="eyebrow">Product</div>
-                <h1 class="service-title">DocPublish</h1>
-                <p class="service-desc">A lightweight workflow for turning working documents into publishable web
-                    outputs.</p>
-            </section>
-            <section class="service-grid">
-                <div class="service-card">
-                    <h3>Overview</h3>
-                    <p>DocPublish is designed for users who already write in documents and want publishing to feel
-                        immediate and repeatable.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Who it's for</h3>
-                    <p>Writers, teams, and operators who want less friction between drafting and publishing.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Key features</h3>
-                    <ul>
-                        <li>Document-first publishing flow</li>
-                        <li>Cleaner handoff from draft to published page</li>
-                        <li>Lower friction for repeat publishing</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <h3>Outcome</h3>
-                    <p>A clearer bridge between writing and shipping.</p>
-                </div>
-            </section>
-        </main>
-        <footer class="site-footer"><span>© runchr</span><span>Built with focus.</span></footer>
-    </div>
+  <div class="wrap service-wrap">
+    <header class="site-header">
+      <a class="logo" href="../../index.html">
+        <span class="logo-mark">🙂<span class="arrow">↗</span></span>
+        <span>runchr</span>
+      </a>
+      <nav class="nav">
+        <a href="../../index.html#thesis">Thesis</a>
+        <a href="../../index.html#products">Products</a>
+        <a href="../../index.html#model">Model</a>
+        <a href="../../index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="service-hero">
+        <a class="back-link" href="../../index.html">← Back to runchr</a>
+        <div class="eyebrow">Product</div>
+        <h1 class="service-title">DocPublish</h1>
+        <p class="service-desc">
+          Write in Google Docs. Publish to the web with fewer steps.
+          DocPublish is built for people who already draft inside documents
+          and want a simpler path from writing to shipping.
+        </p>
+
+        <div class="cta-row">
+          <a class="cta-btn primary" href="YOUR_GOOGLE_FORM_URL" target="_blank" rel="noopener noreferrer">
+            Request Pro Upgrade
+          </a>
+          <a class="cta-btn secondary" href="#pricing">
+            View Pricing
+          </a>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Why DocPublish</h2>
+        <p>
+          Most publishing tools force people to move content from one place to another.
+          Write in Docs, clean it again in a CMS, fix images, then publish.
+          DocPublish reduces that friction. It lets users stay in the writing environment
+          they already know, then publish with a more repeatable workflow.
+        </p>
+      </section>
+
+      <section class="service-grid">
+        <div class="service-card">
+          <h3>Document-first workflow</h3>
+          <p>
+            Start where you already write. Draft in Google Docs, then publish without rebuilding the same post in another editor.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Cleaner publishing handoff</h3>
+          <p>
+            DocPublish helps convert a working document into a web-ready output with less manual cleanup.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Image handling included</h3>
+          <p>
+            Images are uploaded and served through a CDN-backed storage flow so publishing feels more reliable and repeatable.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Built for repeat publishing</h3>
+          <p>
+            It is designed for people who publish often and want a simpler operational path from draft to shipped post.
+          </p>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>How it works</h2>
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-num">01</div>
+            <strong>Write in Google Docs</strong>
+            <div>Use Docs as your main writing environment.</div>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">02</div>
+            <strong>Open the add-on</strong>
+            <div>Select your blog, review title and tags, then publish.</div>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">03</div>
+            <strong>Content is prepared</strong>
+            <div>HTML is cleaned and images are handled through the publishing pipeline.</div>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">04</div>
+            <strong>Publish to Blogger</strong>
+            <div>Your document becomes a published or draft post with fewer manual steps.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Current support</h2>
+        <div class="note-box">
+          DocPublish currently supports <strong>Blogger</strong> first.
+          We are starting with one strong workflow before expanding to additional publishing targets.
+        </div>
+      </section>
+
+      <section class="doc-section" id="pricing">
+        <h2>Pricing</h2>
+        <p>
+          Start free, then upgrade when you need a more consistent publishing workflow.
+        </p>
+
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div class="plan-label">Free</div>
+            <h3 class="plan-name">Free</h3>
+            <div class="plan-price">$0 <span>/ month</span></div>
+            <div class="plan-desc">
+              A lightweight starting point for individuals testing the workflow.
+            </div>
+            <ul>
+              <li>Publish up to 7 times per month</li>
+              <li>Google Docs to Blogger workflow</li>
+              <li>Image handling included</li>
+              <li>Good for testing and occasional publishing</li>
+            </ul>
+          </div>
+
+          <div class="price-card featured">
+            <div class="plan-label">Pro</div>
+            <h3 class="plan-name">Pro</h3>
+            <div class="plan-price">$5 <span>/ month</span></div>
+            <div class="plan-desc">
+              For people who publish more often and want unlimited monthly publishing.
+            </div>
+            <ul>
+              <li>Unlimited publishing</li>
+              <li>Google Docs to Blogger workflow</li>
+              <li>Image handling included</li>
+              <li>Priority access to future improvements</li>
+            </ul>
+            <div class="cta-row">
+              <a class="cta-btn primary" href="YOUR_GOOGLE_FORM_URL" target="_blank" rel="noopener noreferrer">
+                Request Pro Upgrade
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-box">
+          Pro upgrades are currently handled manually.
+          If you want to upgrade, submit the request form and we will follow up with the next step.
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>Who it is for</h2>
+        <div class="service-grid">
+          <div class="service-card">
+            <h3>Writers</h3>
+            <p>
+              For people who already think and write in Docs, and do not want to fight a second editor.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Operators</h3>
+            <p>
+              For teams or individuals who need a simpler, repeatable publishing workflow.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Solo builders</h3>
+            <p>
+              For builders who want lightweight tools instead of a heavier content system.
+            </p>
+          </div>
+          <div class="service-card">
+            <h3>Early adopters</h3>
+            <p>
+              For users who want a focused Blogger workflow now and are comfortable with a product that is still expanding.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>FAQ</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <strong>Does DocPublish support Blogger only?</strong>
+            <div>
+              Yes, for now. We are starting with Blogger first and may expand later.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <strong>What happens after I request Pro?</strong>
+            <div>
+              We will review your request and contact you with the next step for activation.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <strong>Can I start with Free first?</strong>
+            <div>
+              Yes. The Free plan is meant to let you try the workflow before upgrading.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© runchr</span>
+      <span>Built with focus.</span>
+    </footer>
+  </div>
 </body>
 
 </html>
