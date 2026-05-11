@@ -1,2 +1,2 @@
-# runchr-com.github.com
+# runchr.github.com
 Runchr's Landing page
