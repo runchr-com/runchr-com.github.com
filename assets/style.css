@@ -98,7 +98,7 @@ a {
 
 /* Hero */
 .hero {
-    padding: 100px 0 120px;
+    padding: 80px 0 80px;
     text-align: center;
     position: relative;
 }
@@ -303,7 +303,7 @@ a {
 /* Philosophy */
 .philosophy {
     text-align: center;
-    padding: 120px 0;
+    padding: 80px 0;
     border-top: 1px solid var(--line);
 }
 
@@ -324,7 +324,7 @@ a {
 
 /* Contact */
 .contact-section {
-    padding-bottom: 120px;
+    padding-bottom: 80px;
 }
 
 .contact-card {
@@ -355,18 +355,36 @@ a {
 
 /* Footer */
 .site-footer {
-    padding: 48px 0;
+    padding: 60px 0 40px;
     border-top: 1px solid var(--line);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 24px;
     color: var(--subtle);
     font-size: 13px;
+    text-align: center;
 }
 
-.footer-links {
+.footer-links a {
     display: flex;
-    gap: 24px;
+    align-items: center;
+    color: var(--muted);
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.footer-legal {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-legal a:hover {
+    color: var(--text);
 }
 
 @media (max-width: 900px) {
