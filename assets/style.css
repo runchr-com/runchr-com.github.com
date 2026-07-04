@@ -120,7 +120,23 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 
 .hero-pixel-art {
   font-size: 10px; line-height: 1.2; letter-spacing: 2px; margin-top: 36px;
-  opacity: 0.5; filter: grayscale(0.6);
+  opacity: 0.8;
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero-pixel-art .eye {
+  display: inline-block;
+  animation: eye-blink 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes eye-blink {
+  0%, 45%, 55%, 100% { opacity: 1; }
+  48%, 52% { opacity: 0.15; }
 }
 
 .cmd-prompt {
@@ -241,5 +257,5 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-pixel-art { animation: none; }
+  .hero-pixel-art, .hero-pixel-art .eye { animation: none; }
 }
