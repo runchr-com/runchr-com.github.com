@@ -1,20 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=VT323&display=swap");
 
 :root {
-  --bg:        #0b0b12;
-  --bg-panel:  #141421;
-  --bg-card:   #1c1c2e;
-  --border:    #2a2a45;
-  --border-hi: #40406a;
-  --text:      #e4e4ec;
-  --text-dim:  #8a8aaa;
-  --accent:    #6fc8d8;
-  --accent-alt:#b894d4;
+  --bg:        #0b0b14;
+  --bg-panel:  #121222;
+  --bg-card:   #1a1a30;
+  --border:    #2e2e52;
+  --border-hi: #4e4e7e;
+  --text:      #e4e4ee;
+  --text-dim:  #8888aa;
+  --accent:    #5ab8d8;
+  --accent-alt:#c878b4;
   --accent-warm:#d4a854;
-  --cyan:      #6fc8d8;
-  --magenta:   #b894d4;
+  --cyan:      #5ab8d8;
+  --magenta:   #c878b4;
   --yellow:    #d4a854;
-  --shadow:    #050510;
+  --shadow:    #060610;
   --max:       960px;
 }
 
@@ -25,9 +25,14 @@ html, body { margin: 0; padding: 0; overflow-x: hidden; }
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
 body {
-  background: var(--bg); color: var(--text);
+  color: var(--text);
   font-family: 'VT323', monospace; font-size: 18px; line-height: 1.6;
   min-height: 100vh;
+  background: var(--bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 a { color: inherit; text-decoration: none; transition: 0.15s ease; }
@@ -40,28 +45,29 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 .pixel-border {
   border: 1px solid var(--border);
   box-shadow:
-    inset -1px -1px 0 0 var(--shadow),
-    inset 1px 1px 0 0 var(--border-hi);
+    inset -2px -2px 0 0 var(--shadow),
+    inset 2px 2px 0 0 var(--border-hi);
 }
 
 .pixel-border-accent {
   border: 1px solid var(--accent);
   box-shadow:
-    inset -1px -1px 0 0 rgba(111,200,216,0.25),
-    inset 1px 1px 0 0 var(--accent);
+    inset -2px -2px 0 0 rgba(90,184,216,0.2),
+    inset 2px 2px 0 0 var(--accent);
 }
 
 .pixel-divider {
-  height: 2px; margin: 0;
+  height: 4px; margin: 0;
   background: repeating-linear-gradient(
-    90deg, var(--border) 0px, var(--border) 6px,
-    transparent 6px, transparent 12px
+    90deg, var(--border) 0px, var(--border) 4px,
+    transparent 4px, transparent 8px
   );
+  box-shadow: 0 1px 0 0 var(--shadow);
 }
 
 .section-label {
   font-family: 'Space Mono', monospace;
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--accent-warm); margin-bottom: 12px;
 }
 
@@ -73,34 +79,49 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 
 .site-header {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 28px 0; border-bottom: 1px solid var(--border);
+  padding: 28px 0; border-bottom: 2px solid var(--border);
+  box-shadow: inset 0 -4px 0 0 var(--shadow);
 }
 
 .logo {
   display: flex; align-items: center; gap: 10px;
   font-family: 'Space Mono', monospace; font-size: 16px;
-  color: var(--accent); letter-spacing: 0.08em;
+  color: var(--accent); letter-spacing: 0.1em;
 }
 
 .logo-mark {
   font-size: 18px; display: inline-flex; align-items: center;
 }
 
-.nav { display: flex; gap: 20px; }
+.nav { display: flex; gap: 24px; }
 
 .nav a {
   font-family: 'Space Mono', monospace; font-size: 11px;
-  color: var(--text-dim); padding: 6px 10px; letter-spacing: 0.05em;
+  color: var(--text-dim); padding: 6px 0; letter-spacing: 0.08em;
+  position: relative;
+}
+
+.nav a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 2px; background: var(--accent);
+  transform: scaleX(0); transition: transform 0.2s ease;
+  transform-origin: left;
 }
 
 .nav a:hover { color: var(--accent); }
+
+.nav a:hover::after { transform: scaleX(1); }
 
 .hero { padding: 80px 0 64px; text-align: center; position: relative; }
 
 .hero-badge {
   display: inline-block; font-family: 'Space Mono', monospace;
   font-size: 10px; color: var(--accent-warm); padding: 8px 16px;
-  margin-bottom: 28px; letter-spacing: 0.12em; background: var(--bg-panel);
+  margin-bottom: 28px; letter-spacing: 0.15em; background: var(--bg-panel);
+  box-shadow:
+    inset -2px -2px 0 0 var(--shadow),
+    inset 2px 2px 0 0 var(--border-hi);
+  border: 1px solid var(--border);
 }
 
 .hero h1 {
@@ -114,13 +135,13 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 .hero h1 .highlight-accent-alt { color: var(--accent-alt); }
 
 .hero-copy {
-  max-width: 680px; margin: 0 auto; font-size: 20px;
+  max-width: 640px; margin: 0 auto; font-size: 20px;
   color: var(--text-dim); line-height: 1.7;
 }
 
 .hero-pixel-art {
   font-size: 10px; line-height: 1.2; letter-spacing: 2px; margin-top: 36px;
-  opacity: 0.8;
+  opacity: 0.85;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -156,26 +177,23 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 
 .products { padding: 72px 0; }
 
-.bento-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 32px;
-}
-
 .card {
   padding: 32px; min-height: 200px;
   display: flex; flex-direction: column; position: relative;
   overflow: hidden; transition: 0.2s;
+  background: var(--bg-panel);
 }
 
 .card:hover {
-  border-color: var(--border-hi);
+  border-color: var(--accent);
   box-shadow:
-    inset -1px -1px 0 0 var(--shadow),
-    inset 1px 1px 0 0 var(--accent);
+    inset -2px -2px 0 0 var(--shadow),
+    inset 2px 2px 0 0 var(--accent);
 }
 
 .card .badge {
   font-family: 'Space Mono', monospace; font-size: 9px;
-  padding: 4px 10px; background: var(--bg-panel);
+  padding: 4px 10px; background: var(--bg);
   display: inline-block; margin-bottom: 16px; align-self: flex-start;
 }
 
@@ -195,15 +213,27 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 .card .card-link {
   font-family: 'Space Mono', monospace; font-size: 10px; color: var(--accent);
   margin-top: auto; padding-top: 16px; display: inline-block; align-self: flex-start;
+  position: relative;
+}
+
+.card .card-link::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transition: transform 0.2s ease;
+  transform-origin: left;
 }
 
 .card .card-link:hover { color: var(--accent-alt); }
 
+.card .card-link:hover::after {
+  transform: scaleX(1); background: var(--accent-alt);
+}
+
 .card.featured {
   border-color: var(--accent);
   box-shadow:
-    inset -1px -1px 0 0 rgba(111,200,216,0.15),
-    inset 1px 1px 0 0 var(--accent);
+    inset -2px -2px 0 0 rgba(90,184,216,0.15),
+    inset 2px 2px 0 0 var(--accent);
 }
 
 .contact-section { padding: 72px 0; }
@@ -224,23 +254,28 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
   font-family: 'Space Mono', monospace; font-size: 13px;
   color: var(--accent); display: inline-block; padding: 12px 24px;
   letter-spacing: 0.05em;
+  box-shadow:
+    inset -2px -2px 0 0 rgba(90,184,216,0.2),
+    inset 2px 2px 0 0 var(--accent);
+  border: 1px solid var(--accent);
 }
 
-.contact-email:hover { color: var(--accent-alt); }
+.contact-email:hover { color: var(--accent-alt); border-color: var(--accent-alt); }
 
 .site-footer {
-  padding: 48px 0 32px; border-top: 1px solid var(--border);
+  padding: 48px 0 32px; border-top: 2px solid var(--border);
   display: flex; flex-direction: column; align-items: center;
   gap: 20px; font-size: 14px; color: var(--text-dim); margin-top: 32px;
+  box-shadow: inset 0 4px 0 0 var(--shadow);
 }
 
 .footer-links { display: flex; gap: 24px; }
 
-.footer-links a { color: var(--text-dim); }
+.footer-links a { color: var(--text-dim); transition: 0.2s; }
 
 .footer-links a:hover { color: var(--accent); }
 
-.footer-meta { letter-spacing: 0.1em; }
+.footer-meta { letter-spacing: 0.12em; }
 
 .footer-legal { display: flex; gap: 24px; }
 
@@ -250,10 +285,10 @@ a { color: inherit; text-decoration: none; transition: 0.15s ease; }
 
 @media (max-width: 700px) {
   .site-header { flex-direction: column; gap: 16px; }
-  .bento-grid { grid-template-columns: 1fr; }
   .hero h1 { font-size: 20px; }
   .logo { font-size: 13px; }
-  .nav a { font-size: 9px; padding: 4px 6px; }
+  .nav a { font-size: 9px; padding: 4px 0; }
+  .hero-pixel-art { opacity: 0.6; }
 }
 
 @media (prefers-reduced-motion: reduce) {
