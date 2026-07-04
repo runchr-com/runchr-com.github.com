@@ -9,14 +9,41 @@
         content="AI-powered Product Management workflows for Gemini CLI. Run structured discovery, strategy, PRD, and launch workflows directly from the command line.">
     <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
     <link rel="stylesheet" href="../../assets/style.css">
+<style>
+.service-hero { margin: 32px 0 28px; }
+.service-title { margin-bottom: 12px; font-family: 'Press Start 2P', monospace; font-size: clamp(20px, 3vw, 32px); letter-spacing: 0.5px; }
+.service-desc { max-width: 760px; line-height: 1.7; font-size: 18px; color: var(--text-dim); }
+.eyebrow { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; font-family: 'Press Start 2P', monospace; }
+.back-link { display: inline-block; margin-bottom: 20px; color: var(--text-dim); font-size: 14px; }
+.back-link:hover { color: var(--cyan); }
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.service-card {
+  border: 2px solid var(--border);
+  padding: 24px;
+  background: var(--bg-panel);
+  box-shadow: inset -2px -2px 0 0 var(--shadow), inset 2px 2px 0 0 var(--border-hi), -2px -2px 0 0 var(--shadow), 2px 2px 0 0 var(--border-hi);
+}
+.service-card h3 { margin-top: 0; margin-bottom: 10px; font-family: 'Press Start 2P', monospace; font-size: 11px; letter-spacing: 0.5px; }
+.service-card p, .service-card li { line-height: 1.7; color: var(--text-dim); font-size: 16px; }
+.service-card ul { margin: 0; padding-left: 18px; }
+.service-card li::marker { color: var(--cyan); }
+@media (max-width: 700px) {
+  .service-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 
 <body>
     <div class="wrap service-wrap">
         <header class="site-header">
             <a class="logo" href="../../index.html">
-                <span class="logo-mark">🙂<span class="arrow">↗</span></span>
-                <span>runchr</span>
+                <span class="logo-mark">⬡</span>
+                <span>RUNCHR</span>
             </a>
             <nav class="nav">
                 <a href="../../index.html#thesis">Thesis</a>
@@ -97,10 +124,11 @@
         </main>
 
         <footer class="site-footer">
-            <span>© runchr</span>
-            <span><a href="https://runchr.com/terms">Terms</a></span>
-            <span><a href="https://runchr.com/privacy">Privacy</a></span>
-            <span>Built with focus.</span>
+            <div class="footer-meta">© RUNCHR · BUILT WITH FOCUS</div>
+            <div class="footer-legal">
+                <a href="../../terms/index.html">TERMS</a>
+                <a href="../../privacy/index.html">PRIVACY</a>
+            </div>
         </footer>
     </div>
 </body>
