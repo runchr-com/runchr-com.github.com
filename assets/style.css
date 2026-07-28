@@ -175,27 +175,10 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-dim); line-height: 1.7;
 }
 
-.hero-pixel-art {
-  font-size: 10px; line-height: 1.2; letter-spacing: 2px; margin-top: 40px;
-  opacity: 0.9;
+.hero-mascot {
+  width: 200px; height: auto; margin-top: 40px;
+  image-rendering: pixelated;
   filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.12));
-  animation: float 3s ease-in-out infinite;
-}
-
-.hero-pixel-art .eye {
-  display: inline-block;
-  animation: eye-blink 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-6px) rotate(-1deg); }
-  75% { transform: translateY(2px) rotate(1deg); }
-}
-
-@keyframes eye-blink {
-  0%, 45%, 55%, 100% { opacity: 1; transform: scaleY(1); }
-  48%, 52% { opacity: 0.15; transform: scaleY(0.1); }
 }
 
 /* ── Cmd Prompt ── */
@@ -324,13 +307,12 @@ a { color: inherit; text-decoration: none; }
   .hero h1 { font-size: 20px; }
   .logo { font-size: 15px; }
   .nav a { font-size: 12px; }
-  .hero-pixel-art { opacity: 0.7; }
+  .hero-mascot { width: 160px; }
   .card { max-width: 100%; }
   .particles span { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-pixel-art, .hero-pixel-art .eye,
   .particles span,
   body,
   .cmd-prompt::before { animation: none !important; }
