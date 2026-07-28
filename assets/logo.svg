@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="runchr">
+  <title>runchr logo</title>
+  <!-- antenna bulb: the mint spark -->
+  <rect x="13.5" y="1" width="5" height="5" fill="#69D6A7"/>
+  <!-- antenna stem -->
+  <rect x="14.5" y="6" width="3" height="2.5" fill="#0E0C01"/>
+  <!-- hexagon head, monolinear -->
+  <path d="M28 18L22 28.39L10 28.39L4 18L10 7.61L22 7.61Z" fill="none" stroke="#0E0C01" stroke-width="3" stroke-linejoin="miter"/>
+  <!-- pixel eyes -->
+  <rect x="9" y="15" width="4" height="4" fill="#0E0C01"/>
+  <rect x="19" y="15" width="4" height="4" fill="#0E0C01"/>
+</svg>
